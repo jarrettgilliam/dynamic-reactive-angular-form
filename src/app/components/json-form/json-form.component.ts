@@ -14,6 +14,15 @@ export interface JsonFormData {
 })
 export class JsonFormComponent implements OnChanges {
     @Input() jsonFormData: JsonFormData | undefined;
+    inputControlTypes = [
+        'text',
+        'password',
+        'email',
+        'number',
+        'search',
+        'tel',
+        'url'
+    ];
 
     public myForm: FormGroup = this.fb.group({});
 

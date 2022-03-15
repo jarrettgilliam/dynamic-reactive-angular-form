@@ -1,14 +1,10 @@
-<!--<ion-header>-->
-<!--    <ion-toolbar color="primary">-->
-<!--        <ion-title> Dynamic JSON Form </ion-title>-->
-<!--    </ion-toolbar>-->
-<!--</ion-header>-->
-<!--<ion-content class="ion-padding">-->
-<!--    <app-json-form [jsonFormData]="formData"></app-json-form>-->
-<!--</ion-content>-->
+<div fxLayout="column" fxLayoutGap="10px">
+    <mat-toolbar color="primary">
+        <span>Dynamic JSON Form</span>
+    </mat-toolbar>
 
-<mat-toolbar color="primary">
-    <span>Dynamic JSON Form</span>
-</mat-toolbar>
+    <div fxLayoutAlign="space-around">
+        <app-json-form [jsonFormData]="formData"></app-json-form>
+    </div>
+</div>
 
-<app-json-form [jsonFormData]="formData"></app-json-form>

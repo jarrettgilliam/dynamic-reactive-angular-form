@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
         this.http
             .get<JsonFormData>('/assets/my-form.json')
             .subscribe(formData => {
+                console.log(formData);
                 this.formData = formData;
             });
     }
