@@ -16,6 +16,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        FormlyModule.forRoot(),
+        FormlyMaterialModule,
         HttpClientModule,
         FlexLayoutModule,
 

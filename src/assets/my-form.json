@@ -1,55 +1,57 @@
 {
     "controls": [
         {
-            "name": "firstName",
-            "label": "First name:",
-            "value": "",
-            "type": "text",
-            "validators": {
+            "key": "firstName",
+            "defaultValue": "",
+            "type": "input",
+            "templateOptions": {
+                "label": "First name",
                 "required": true,
                 "minLength": 10
             }
         },
         {
-            "name": "lastName",
-            "label": "Last name:",
-            "value": "",
-            "type": "text",
-            "validators": {}
+            "key": "lastName",
+            "defaultValue": "",
+            "type": "input",
+            "templateOptions": {
+                "label": "Last name:"
+            }
         },
         {
-            "name": "comments",
-            "label": "Comments",
-            "value": "test",
+            "key": "comments",
+            "defaultValue": "test",
             "type": "textarea",
-            "validators": {}
+            "templateOptions": {
+                "label": "Comments"
+            }
         },
         {
-            "name": "agreeTerms",
-            "label": "This is a checkbox?",
-            "value": false,
+            "key": "agreeTerms",
+            "defaultValue": false,
             "type": "checkbox",
-            "validators": {}
+            "templateOptions": {
+                "label": "This is a checkbox?"
+            }
         },
         {
-            "name": "size",
-            "label": "Range",
-            "value": "50",
+            "key": "size",
+            "defaultValue": "50",
             "type": "range",
-            "options": {
+            "templateOptions": {
+                "label": "Range",
                 "min": "0",
                 "max": "100",
-                "step": "1",
-                "icon": "sunny"
-            },
-            "validators": {}
+                "step": "1"
+            }
         },
         {
-            "name": "lightDark",
-            "label": "Do you like toggles?",
-            "value": false,
+            "key": "lightDark",
+            "defaultValue": false,
             "type": "toggle",
-            "validators": {}
+            "templateOptions": {
+                "label": "Do you like toggles?"
+            }
         }
     ]
 }

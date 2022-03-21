@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { JsonFormControls } from '../../interfaces/json-form-controls';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export interface JsonFormData {
-    controls: JsonFormControls[];
+    controls: FormlyFieldConfig[] | undefined;
 }
 
 @Component({
@@ -14,15 +14,6 @@ export interface JsonFormData {
 })
 export class JsonFormComponent implements OnChanges {
     @Input() jsonFormData: JsonFormData | undefined;
-    inputControlTypes = [
-        'text',
-        'password',
-        'email',
-        'number',
-        'search',
-        'tel',
-        'url'
-    ];
 
     public myForm: FormGroup = this.fb.group({});
 
@@ -30,63 +21,6 @@ export class JsonFormComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (!changes.jsonFormData.firstChange) {
-            if (this.jsonFormData !== undefined) {
-                console.log(this.jsonFormData);
-                this.createForm(this.jsonFormData.controls);
-            }
-        }
-    }
-
-    createForm(controls: JsonFormControls[]) {
-        for (const control of controls) {
-            const validatorsToAdd = [];
-            for (const [key, value] of Object.entries(control.validators)) {
-                switch (key) {
-                    case 'min':
-                        validatorsToAdd.push(Validators.min(value));
-                        break;
-                    case 'max':
-                        validatorsToAdd.push(Validators.max(value));
-                        break;
-                    case 'required':
-                        if (value) {
-                            validatorsToAdd.push(Validators.required);
-                        }
-                        break;
-                    case 'requiredTrue':
-                        if (value) {
-                            validatorsToAdd.push(Validators.requiredTrue);
-                        }
-                        break;
-                    case 'email':
-                        if (value) {
-                            validatorsToAdd.push(Validators.email);
-                        }
-                        break;
-                    case 'minLength':
-                        validatorsToAdd.push(Validators.minLength(value));
-                        break;
-                    case 'maxLength':
-                        validatorsToAdd.push(Validators.maxLength(value));
-                        break;
-                    case 'pattern':
-                        validatorsToAdd.push(Validators.pattern(value));
-                        break;
-                    case 'nullValidator':
-                        if (value) {
-                            validatorsToAdd.push(Validators.nullValidator);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-            this.myForm.addControl(
-                control.name,
-                this.fb.control(control.value, validatorsToAdd)
-            );
-        }
     }
 
     onSubmit() {
